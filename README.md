@@ -77,7 +77,7 @@ Enter your question in the text box
 View the answer and supporting context from Wikipedia
 
 ## Deployment
-Option 1: Streamlit Sharing (easiest)
+## Option 1: Streamlit Sharing (easiest)
 Create a free account on Streamlit Sharing
 
 Connect your GitHub repository
@@ -86,7 +86,7 @@ Set OPENAI_API_KEY as a secret in the deployment settings
 
 Deploy!
 
-Option 2: Docker Deployment
+## Option 2: Docker Deployment
 Build the Docker image:
 
 ```bash
@@ -99,7 +99,7 @@ docker run -p 8501:8501 -e OPENAI_API_KEY=your-key wiki-rag
 ```
 Access at http://localhost:8501
 
-Option 3: Traditional Server Deployment
+## Option 3: Traditional Server Deployment
 Install dependencies on your server as shown in the Installation section
 
 Run with:
@@ -107,24 +107,4 @@ Run with:
 ```bash
 nohup streamlit run app.py --server.port=8501 &
 ```
-Set up a reverse proxy (Nginx/Apache) if needed
 
-Customization
-To change which Wikipedia pages are indexed, modify the PAGES list in app.py
-
-To use a different OpenAI model, change the model parameter in both the OpenAI and OpenAIEmbedding initializations
-
-Adjust similarity_top_k in get_query_engine() to change how many context chunks are retrieved
-
-Troubleshooting
-Problem: Slow first run
-
-Solution: This is normal as it downloads and indexes Wikipedia content. Subsequent runs will be faster.
-
-Problem: API key not found
-
-Solution: Ensure your .env file exists in the project root and contains OPENAI_API_KEY=your-key
-
-Problem: Index not persisting
-
-Solution: Ensure the application has write permissions in the project directory
